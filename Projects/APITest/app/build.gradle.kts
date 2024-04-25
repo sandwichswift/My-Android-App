@@ -39,6 +39,11 @@ android {
 }
 
 dependencies {
+    val okhttpVersion = "4.12.0"
+    //网络服务
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
