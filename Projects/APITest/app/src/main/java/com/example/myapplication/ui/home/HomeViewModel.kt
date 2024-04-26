@@ -8,9 +8,9 @@ import com.example.myapplication.API.ObjectRecognition
 class HomeViewModel : ViewModel() {
 
 
-    private val _imgURL = MutableLiveData<String>()//图片路径
+    private val _imgURI = MutableLiveData<String>()//图片路径
     val imgURL: LiveData<String>
-        get() = _imgURL
+        get() = _imgURI
 
     private val objectRecognition = ObjectRecognition()//创建物体识别对象
 
@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
         _openGallery.value = false
     }
 
-    fun setImagePath(path: String) {
-        _imgURL.value = path
+    fun setImageUri(path: String) {
+        _imgURI.value = path
     }
 }
