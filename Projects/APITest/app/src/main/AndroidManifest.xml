@@ -4,6 +4,8 @@
 
     <!-- Add this line to get permission to access files-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Add this line to get permission to access internet-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"

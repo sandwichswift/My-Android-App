@@ -50,5 +50,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvRes"
             tools:src="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btnRecognize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reconize"
+            app:layout_constraintBottom_toTopOf="@+id/imgView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRes" />
+
+        <LinearLayout
+            android:layout_width="408dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="48dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgView">
+
+            <TextView
+                android:id="@+id/tvRecognition"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:text="tvRecognition"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

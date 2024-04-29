@@ -43,6 +43,12 @@ dependencies {
     //网络服务
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    //添加协程相关的依赖
+    val coroutines_version = "1.7.3"
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
+
 
 
     implementation(libs.androidx.core.ktx)
