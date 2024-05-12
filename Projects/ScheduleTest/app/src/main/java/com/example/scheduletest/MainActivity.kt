@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         val data = createDataTest()
         scheduleRecyclerView = findViewById(R.id.scheduleRecyclerView)
         scheduleRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         scheduleRecyclerView.adapter = adapter
 
     }
-    fun createDataTest(): List<ScheduleData>{
+    fun createDataTest(): MutableList<ScheduleData>{
         val data = mutableListOf<ScheduleData>()
         val ran  = Random()
         for(i in 0..10){
