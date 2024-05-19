@@ -12,14 +12,24 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_aitool"
+        android:name="com.example.myapplication.ui.aitool.AitoolFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_aitool" >
+        <action
+            android:id="@+id/action_navigation_aitool_to_objectRecognitionFragment"
+            app:destination="@id/objectRecognitionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/objectRecognitionFragment"
+        android:name="com.example.myapplication.ui.aitool.ObjectRecognitionFragment"
+        android:label="fragment_object_recognition"
+        tools:layout="@layout/fragment_object_recognition" />
 </navigation>

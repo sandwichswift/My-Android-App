@@ -14,7 +14,7 @@ abstract class ScheduleDatabase : RoomDatabase() {
 
     abstract fun scheduleDao(): ScheduleDao
 
-    companion object {
+    companion object {//伴生对象,类似于Java中的静态方法
         @Volatile
         private var INSTANCE: ScheduleDatabase? = null
 
