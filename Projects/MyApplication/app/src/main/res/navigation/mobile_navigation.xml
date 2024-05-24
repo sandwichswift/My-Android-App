@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_editScheduleFragment"
+            app:destination="@id/editScheduleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_aitool"
@@ -31,5 +35,18 @@
         android:id="@+id/objectRecognitionFragment"
         android:name="com.example.myapplication.ui.aitool.ObjectRecognitionFragment"
         android:label="fragment_object_recognition"
-        tools:layout="@layout/fragment_object_recognition" />
+        tools:layout="@layout/fragment_object_recognition" >
+        <action
+            android:id="@+id/action_objectRecognitionFragment_to_navigation_aitool"
+            app:destination="@id/navigation_aitool" />
+    </fragment>
+    <fragment
+        android:id="@+id/editScheduleFragment"
+        android:name="com.example.myapplication.ui.home.EditScheduleFragment"
+        android:label="fragment_edit_schedule"
+        tools:layout="@layout/fragment_edit_schedule" >
+        <action
+            android:id="@+id/action_editScheduleFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

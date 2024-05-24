@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.aitool
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentAitoolBinding
+val TAG = "AitoolFragment"
+fun log(info:Any?){
+    Log.d(TAG,info.toString())
+}
 
 class AitoolFragment : Fragment() {
 
@@ -26,7 +31,7 @@ class AitoolFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(AitoolViewModel::class.java)
 
         _binding = FragmentAitoolBinding.inflate(inflater, container, false)
         val root: View = binding.root

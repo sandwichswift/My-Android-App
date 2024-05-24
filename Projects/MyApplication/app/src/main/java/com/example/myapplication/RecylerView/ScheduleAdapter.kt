@@ -25,6 +25,7 @@ class ScheduleDataAdapter(private val data: List<Schedule>,private val homeViewM
         holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
 
             data[position].isCompleted = isChecked
+
             //更新数据库
             GlobalScope.launch(Dispatchers.IO){
                 homeViewModel.update(data[position])

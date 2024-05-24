@@ -11,10 +11,13 @@ import com.example.myapplication.log
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.map
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import com.example.myapplication.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
 
     private val db : ScheduleDatabase by lazy {
         Room.databaseBuilder(
@@ -28,11 +31,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             it.sortedBy { it.isCompleted }
         }
 
+    val scheduleListCompleted: LiveData<List<Schedule>> = scheduleList.map {
+        it.filter { it.isCompleted }
+    }
+    val scheduleListUncompleted: LiveData<List<Schedule>> = scheduleList.map {
+        it.filter { !it.isCompleted }
+    }
 
-    suspend fun addDataToDb() {
+    val weatherInfo: MutableLiveData<String> = MutableLiveData()
+
+
+
+
+
+
+    suspend fun addDataToDb(schedule: Schedule) {
         coroutineScope {
-            val id = System.currentTimeMillis()//获取当前时间戳
-            val schedule = Schedule(id, "title$id", "time$id")
             dao.insert(schedule)
             log("addDataToDb$schedule")
         }
@@ -41,7 +55,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     suspend fun clearAllData() {
         coroutineScope {
             dao.deleteAll()
-            scheduleList = dao.getAllReturnLivedata()//更新数据
             log("clearAllData")
         }
     }
@@ -51,5 +64,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             dao.update(schedule)
             log("update$schedule")
         }
+    }
+
+    suspend fun delete(id: Long) {
+        coroutineScope {
+            dao.deleteById(id)
+            log("delete$id")
+        }
+
     }
 }
