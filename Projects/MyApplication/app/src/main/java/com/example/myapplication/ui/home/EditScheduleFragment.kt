@@ -18,6 +18,7 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentEditScheduleBinding
 import com.example.myapplication.db.Schedule
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 import java.util.*
 
 class EditScheduleFragment : Fragment() {
@@ -79,13 +80,15 @@ class EditScheduleFragment : Fragment() {
             lifecycleScope.launch {
                 if(scheduleid != null){
                     // 创建一个 Schedule 对象
-                    val schedule = Schedule(scheduleid, title, date, description = content)
+                    val createTime = LocalDate.now().toString()
+                    val schedule = Schedule(scheduleid,title = title, time = date, createTime = createTime,description = content)
                     homeViewModel.update(schedule)
                 }
                 else {
                     // 创建一个 Schedule 对象
                     val id = System.currentTimeMillis() // 获取当前时间戳作为 id
-                    val schedule = Schedule(id, title, date, description = content)
+                    val createTime = LocalDate.now().toString()
+                    val schedule = Schedule(id, title = title, time = date, createTime = createTime,description = content)
                     homeViewModel.addDataToDb(schedule)
                 }
             }

@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -30,7 +31,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Locale
 
-
+private const val PERMISSIONS_GET_LOCATION = 3
 fun log(info: Any){
     Log.d("Todo", info.toString())
 }
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var  homeViewModel: HomeViewModel
     lateinit var aitoolViewModel: AitoolViewModel
 
-    private var city: String = "Changsha"//默认长沙
+    private var city: String = "北京"//默认城市
 
     private lateinit var locationManager: LocationManager
 
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) &&
             !locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            askLocationSettings();
+            askLocationSettings()
         }
         log("LocationManager: $locationManager")
         val location = getLocation()
@@ -157,8 +158,31 @@ class MainActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
-            1
+            PERMISSIONS_GET_LOCATION
         )
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSIONS_GET_LOCATION -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // 权限被用户授予，你可以在这里进行你的操作
+                    getLocation()
+                } else {
+                    // 权限被用户拒绝，你可以在这里处理权限被拒绝的情况
+                    //requestPermission()
+                    Toast.makeText(this, "权限被拒绝", Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+            // 其他的权限请求，可以在这里处理
+            else -> {
+                // Ignore all other requests.
+            }
+        }
+    }
+
+
 
 }

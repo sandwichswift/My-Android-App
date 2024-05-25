@@ -10,14 +10,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.db.Schedule
+import com.example.myapplication.log
 import java.time.LocalDate
 import java.time.Period
+import java.time.temporal.ChronoUnit
 
 class ScheduleViewHolder private constructor(itemView: View)
     : RecyclerView.ViewHolder(itemView){
     //引用控件
     private val title = itemView.findViewById<TextView>(R.id.titletv)
     private val time = itemView.findViewById<TextView>(R.id.timetv)
+    private val createTime = itemView.findViewById<TextView>(R.id.createTime)
     private val detail = itemView.findViewById<TextView>(R.id.detailtv)
     val checkbox = itemView.findViewById<CheckBox>(R.id.checkBox)//公开checkbox
     private val daysLeft = itemView.findViewById<TextView>(R.id.daysLeft)
@@ -32,6 +35,8 @@ class ScheduleViewHolder private constructor(itemView: View)
     fun bind(data: Schedule){
         title.text = data.title
         time.text = data.time
+        createTime.text = "创建于：${data.createTime}"
+        log("createTime.text:${data.createTime}")
         detail.text = data.description
         checkbox.isChecked = data.isCompleted  //设置checkbox的选中状态
 
@@ -45,8 +50,8 @@ class ScheduleViewHolder private constructor(itemView: View)
                 val dateStr = data.time;
                 val date = LocalDate.parse(dateStr);
                 val today = LocalDate.now();
-                val period = Period.between(today, date);//计算日期差,date-today
-                val days = period.days;
+                //val period = Period.between(today, date);//计算日期差,date-today
+                val days = ChronoUnit.DAYS.between(today, date);//计算日期差,date-today
                 daysLeft.text = "剩余${days}天"
 
                 itemView.alpha = 1.0f

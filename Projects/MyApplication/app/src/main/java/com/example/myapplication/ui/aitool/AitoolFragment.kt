@@ -24,6 +24,7 @@ class AitoolFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     lateinit var btnObjRecognition : ImageButton
+    lateinit var btnOCR : ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +40,11 @@ class AitoolFragment : Fragment() {
 
         btnObjRecognition.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_aitool_to_objectRecognitionFragment)
+        }
+
+        btnOCR = binding.btnOCR
+        btnOCR.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_aitool_to_ocrFragment)
         }
 
         return root

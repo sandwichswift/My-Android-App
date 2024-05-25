@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -108,9 +109,17 @@ class HomeFragment : Fragment() {
             scheduleRecyclerView.scrollToPosition(adapter.itemCount - 1)
         }
         btnClrAll.setOnClickListener {
-            lifecycleScope.launch {
-                homeViewModel.clearAllData()
-            }
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("确认删除")
+                .setMessage("你确定要删除所有计划吗？")
+                .setPositiveButton("确定") { _, _ ->
+                    lifecycleScope.launch {
+                        homeViewModel.clearAllData()
+                    }
+                }
+                .setNegativeButton("取消", null)
+                .create()
+            dialog.show()
         }
 
         weathertv.text = homeViewModel.weatherInfo.value

@@ -4,21 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="56dp"
     tools:context=".ui.aitool.AitoolFragment">
 
-    <ImageButton
-        android:id="@+id/btnObjRecognition"
-        android:layout_width="107dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="@string/object_recognition_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvObjRecognition"
         android:layout_width="102dp"
         android:layout_height="32dp"
         android:layout_marginStart="50dp"
@@ -28,4 +18,40 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnObjRecognition" />
+
+    <ImageButton
+        android:id="@+id/btnOCR"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:contentDescription="@string/ocr_button"
+        android:src="@drawable/robin"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/btnObjRecognition"
+        android:layout_width="107dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/furina"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/object_recognition_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOCR"
+        android:layout_width="102dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:text="文字识别"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOCR" />
 </androidx.constraintlayout.widget.ConstraintLayout>

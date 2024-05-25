@@ -23,6 +23,9 @@
         <action
             android:id="@+id/action_navigation_aitool_to_objectRecognitionFragment"
             app:destination="@id/objectRecognitionFragment" />
+        <action
+            android:id="@+id/action_navigation_aitool_to_ocrFragment"
+            app:destination="@id/ocrFragment" />
     </fragment>
 
     <fragment
@@ -48,5 +51,14 @@
         <action
             android:id="@+id/action_editScheduleFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/ocrFragment"
+        android:name="com.example.myapplication.ui.aitool.OcrFragment"
+        android:label="fragment_ocr"
+        tools:layout="@layout/fragment_ocr" >
+        <action
+            android:id="@+id/action_ocrFragment_to_navigation_aitool"
+            app:destination="@id/navigation_aitool" />
     </fragment>
 </navigation>
